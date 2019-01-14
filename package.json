@@ -1,24 +1,9 @@
 {
   "name": "webplayer-hotkeys",
   "version": "0.0.0-development",
-  "main": "src\\background.ts",
+  "main": "src/background.js",
   "description": "A Chrome extension that assigns hotkeys to play/pause, and switch musics on various sources.",
-  "repository": "https://github.com/GabrielDuarteM/Webplayer-Hotkeys.git",
+  "repository": "https://github.com/cletusw/webplayer-hotkeys",
   "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
-  "license": "MIT",
-  "scripts": {
-    "start": "gd-scripts start",
-    "build": "gd-scripts build",
-    "lint": "gd-scripts lint",
-    "ci": "gd-scripts ci",
-    "typecheck": "gd-scripts typecheck",
-    "release": "semantic-release"
-  },
-  "devDependencies": {
-    "@types/chrome": "^0.0.76",
-    "@types/node": "^10.10.3",
-    "gd-scripts": "^3.1.0",
-    "semantic-release": "^15.9.16",
-    "semantic-release-chrome": "^1.0.2"
-  }
+  "license": "MIT"
 }

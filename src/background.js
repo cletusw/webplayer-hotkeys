@@ -1,6 +1,4 @@
-import { Command, Player, PlayerTab } from './types'
-
-const players: Player[] = [
+const players = [
   {
     controlQueries: {
       next: '.spoticon-skip-forward-16',
@@ -61,10 +59,10 @@ const players: Player[] = [
   },
 ]
 
-const checkOpenedPlayers = (): Promise<PlayerTab[]> =>
-  new Promise<PlayerTab[]>((resolve, reject) => {
+const checkOpenedPlayers = () => {
+  return new Promise((resolve, reject) => {
     try {
-      const openedPlayers: PlayerTab[] = []
+      const openedPlayers = []
       let checkedPlayers = 0
       players.forEach(player => {
         chrome.tabs.query({ url: player.tabQuery }, tabs => {
@@ -82,8 +80,9 @@ const checkOpenedPlayers = (): Promise<PlayerTab[]> =>
       reject(err)
     }
   })
+}
 
-const getSelector = (player: Player, command: Command) => {
+const getSelector = (player, command) => {
   switch (command) {
     case 'prev':
       return player.controlQueries.prev
@@ -97,10 +96,7 @@ const getSelector = (player: Player, command: Command) => {
   }
 }
 
-const executeCommandPlayer = (
-  openedPlayer: PlayerTab,
-  command: Command,
-): void => {
+const executeCommandPlayer = (openedPlayer, command) => {
   const querySelector = getSelector(openedPlayer.player, command)
   const code = `document.querySelector('${querySelector}').click()`
 
@@ -117,7 +113,7 @@ const openDefaultPlayer = () => {
   }
 }
 
-const onCommand = async (command: Command): Promise<void> => {
+const onCommand = async (command) => {
   const openedPlayers = await checkOpenedPlayers()
   if (openedPlayers.length) {
     executeCommandPlayer(openedPlayers[0], command)
@@ -126,7 +122,7 @@ const onCommand = async (command: Command): Promise<void> => {
   }
 }
 
-chrome.commands.onCommand.addListener(onCommand as any)
+chrome.commands.onCommand.addListener(onCommand)
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.tabs.create({ url: chrome.runtime.getURL('first-time/index.html') })

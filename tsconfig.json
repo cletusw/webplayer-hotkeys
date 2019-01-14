@@ -1,6 +1,0 @@
-{
-  "extends": "./node_modules/gd-scripts/typescript.json",
-  "compilerOptions": {
-    "lib": ["dom", "esnext"]
-  }
-}

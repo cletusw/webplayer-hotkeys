@@ -30,7 +30,7 @@
     }
   },
   "homepage_url":
-    "https://github.com/GabrielQDuarte/Webplayer-Hotkeys/tree/master",
+    "https://github.com/cletusw/webplayer-hotkeys",
   "incognito": "split",
   "permissions": [
     "*://*.spotify.com/*",
